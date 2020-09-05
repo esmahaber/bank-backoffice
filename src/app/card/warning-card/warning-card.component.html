@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title"></h4>
+        <p class="card-category">{{date | date:'MMM d, y, h:mm:ss a'}}</p>
+    </div>
+    <div class="card-body table-responsive">
+        <table class="table table-hover">
+            <thead class="text-warning">
+                <tr>
+                    <th *ngFor="let header of tableHeaders">
+                        {{header}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let transaction of transactions">
+                    <td>
+                        {{transaction.id}}
+                    </td>
+                    <td class="text-primary">
+                        {{transaction.transactionDate | date:'h:mm:ss a'}}
+                    </td>
+                    <td>
+                        {{transaction.amount}}
+                    </td>
+                    <td class="text-primary">
+                        {{transaction.transactionType}}
+                    </td>
+
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

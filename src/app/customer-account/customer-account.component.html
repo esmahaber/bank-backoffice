@@ -1,0 +1,259 @@
+<form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2">
+    <i class="fa fa-search" aria-hidden="true"></i>
+    <input [(ngModel)]="filterText" class="form-control form-control-sm ml-3 w-75" id="customerName" type="text"
+        placeholder="Search" aria-label="Search" name="searchInput">
+
+    <div *ngIf="filterText" class="col-md-12">
+        <div class="card-body">
+
+            <div class="card card-profile justify-content-center ">
+                <table class="table ">
+
+                    <tbody>
+                        <tr *ngFor="let customer of customers | filter:filterText">
+                            <button type="button" class="customer" (click)="selectCustomer(customer.id)">
+                                <td>
+                                    {{customer.name}}
+                                </td>
+                                <td>
+                                    {{customer.lastname}}
+                                </td>
+                                <td>
+                                    {{customer.accountNumber}}
+                                </td>
+                            </button>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<div class="container">
+    <div class="card" *ngFor="let item of customer">
+        <div class="row ">
+            <h4 class="col card-title text-secondary pl-5 pr-2 py-3">
+                {{item.name | uppercase }}
+                {{item.lastname | uppercase }}
+            </h4>
+            <div class="row mr-5">
+
+                <button type="button" class="col btn btn-danger btn-circle d-flex justify-content-end"
+                    (click)="openModal(templatedelete)" title="Delete customer">
+                    <i class="fa fa-trash"></i>
+                </button>
+
+                <button type="button" title="New account" class="col btn btn-success btn-circle"
+                    (click)="openModal(templateadd)" title="Delete customer">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                </button>
+
+
+                <br><br>
+                <ng-template #templatedelete>
+                    <div class="modal-body text-center">
+                        <p>Are you sure you want to delete the user?</p>
+                        <button type="button" class="btn btn-default" (click)="deleteCustomer()">Yes</button>
+                        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+                    </div>
+                </ng-template>
+
+                <br><br>
+                <ng-template #templateadd>
+                    <div class="modal-body text-center">
+                        <p>Are you sure you want to add a new account?</p>
+                        <button type="button" class="btn btn-default" (click)="addAccount()">Yes</button>
+                        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+                    </div>
+                </ng-template>
+
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+
+                <div class="card-body">
+                    <div class="card card-profile justify-content-center">
+                        <div>
+                            <div class="card-body">
+                                <h6 class="card-category text-gray"> ₺</h6>
+                                <p class="card-description">
+                                    {{item.birthDate}}
+                                    <br />
+                                    {{item.phone}}
+                                    <br />
+                                    {{item.email}}
+                                    <br />
+                                    {{item.addressDetails}}
+                                    <br />
+                                    {{item.addressCity}}
+                                    {{item.addressProvince}}
+                                    <br />
+
+                                </p>
+
+
+                            </div>
+                            <hr />
+                            <div class="card-footer">
+                                <div class="stats">
+                                    <i class="material-icons">date_range</i>{{item.createDate}}
+                                    <app-edit-customer [customerId]="customerId" [customer]="customer">
+                                    </app-edit-customer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class=" col-md-4" *ngFor="let account of account">
+                <div class=" card-body">
+                    <div class="card card-profile justify-content-center">
+                        <div>
+                            <div class="card-body">
+                                <h6 class="card-category text-gray">{{account.totalBalance}} ₺</h6>
+                                <div class="card-description">
+                                    <hr />
+                                    <p class="text-success">
+                                        {{account.creditBalance}}
+                                    </p>
+
+                                    <p class="text-danger">
+                                        {{account.debtBalance}}
+                                    </p>
+                                </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <hr />
+                                <button title="Delete account" (click)="deleteAccount(account.id)"
+                                    class="btn btn-danger btn-circle d-flex justify-content-end">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <div class="card card-profile justify-content-center">
+                                <div>
+                                    <div class="card-body">
+                                        <h6 class="card-category text-gray">Sent Transaction History</h6>
+
+
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class=" text-primary">
+                                                    <tr>
+                                                        <th *ngFor="let header of senderTableHeaders">
+                                                            {{header}}
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let transaction of transactionsSender">
+
+                                                        <td class="text-primary">
+                                                            {{transaction.transactionDate}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{transaction.Receiver}}
+                                                        </td>
+                                                        <td>
+                                                            {{transaction.amount}}
+                                                        </td>
+                                                        <td class="text-primary">
+                                                            {{transaction.transactionType}}
+                                                        </td>
+                                                        <td>
+                                                            {{transaction.explanation}}
+                                                        </td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <hr />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <div class="card card-profile justify-content-center">
+                                <div>
+                                    <div class="card-body">
+                                        <h6 class="card-category text-gray">Received Transaction History</h6>
+
+
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class=" text-primary">
+                                                    <tr>
+                                                        <th *ngFor="let header of receiverTableHeaders">
+                                                            {{header}}
+                                                        </th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let transaction of transactionsReceiver">
+
+                                                        <td class="text-primary">
+                                                            {{transaction.transactionDate}}
+                                                        </td>
+
+                                                        <td>
+                                                            {{transaction.Sender}}
+                                                        </td>
+                                                        <td>
+                                                            {{transaction.amount}}
+                                                        </td>
+                                                        <td class="text-primary">
+                                                            {{transaction.transactionType}}
+                                                        </td>
+                                                        <td>
+                                                            {{transaction.explanation}}
+                                                        </td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <hr />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal-->
+
+</div>

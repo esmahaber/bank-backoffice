@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons fa fa-users"></i>
+        </div>
+        <p class="card-category">Total customers</p>
+        <h3 class="card-title">{{model.totalCustomers}}</h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-danger">warning</i>
+          <a href="javascript:;">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-info card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons fa fa-money"></i>
+        </div>
+        <p class="card-category">Toplam para</p>
+        <h3 class="card-title">{{model.totalBalance}} ₺</h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons">date_range</i> Last 24 Hours
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-danger card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons fa fa-id-card"></i>
+        </div>
+        <p class="card-category">Total Account</p>
+        <h3 class="card-title">{{model.totalAccount}}</h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons">local_offer</i> Tracked from Github
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-success  card-header-icon">
+        <div class="card-icon">
+          <i class="fa fa-lightbulb-o"></i>
+        </div>
+        <p class="card-category">Active Customers</p>
+        <h3 class="card-title">{{model.activeAccount}}</h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons">update</i> Just Updated
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-6">
+    <app-task-card></app-task-card>
+  </div>
+
+  <div class="col-lg-6 col-md-12">
+    <app-warning-card></app-warning-card>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h4 class="card-title">{{head}}</h4>
+    <p class="card-category">Created using Roboto Font Family</p>
+  </div>
+  <div class="card-body">
+    <form id="form-margin" #customerAddForm="ngForm" (ngSubmit)="addCustomer(customerAddForm)">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="Firstname" class="form-control" #name="ngModel" [(ngModel)]="model.name"
+              name="name" id="name" required>
+            <div *ngIf="name.invalid && name.dirty" class="alert alert-danger" role="alert">
+              Required the name!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="Lastname" class="form-control" #lastname="ngModel"
+              [(ngModel)]="model.lastname" name="lastname" id="lastname" required>
+            <div *ngIf="lastname.invalid && lastname.dirty" class="alert alert-danger" role="alert">
+              Required the lastname!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group bmd-form-group">
+            <input type="date" class="form-control" #birthDate="ngModel" [(ngModel)]="model.birthDate" name="birthDate"
+              id="birthDate" required>
+            <div *ngIf="birthDate.invalid && birthDate.dirty" class="alert alert-danger" role="alert">
+              Required the birth date!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="Card Number" class="form-control" #cardNumber="ngModel"
+              [(ngModel)]="model.accountNumber" name="cardNumber" id="cardNumber" required>
+            <div *ngIf="cardNumber.invalid && cardNumber.dirty" class="alert alert-danger" role="alert">
+              Required the card number!
+            </div>
+          </div>
+        </div>
+      </div>
+      <span class="tim-note">Contact</span>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="phone" placeholder="Phone" class="form-control" #phone="ngModel" [(ngModel)]="model.phone"
+              name="phoneNumber" id="phoneNumber" required>
+            <div *ngIf="phone.invalid && phone.dirty" class="alert alert-danger" role="alert">
+              Required the phone!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="email" placeholder="E-mail" class="form-control" #email="ngModel" [(ngModel)]="model.email"
+              name="email" id="email" required>
+            <div *ngIf="email.invalid && email.dirty" class="alert alert-danger" role="alert">
+              Required the e-mail!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="Address Title" class="form-control" #title="ngModel"
+              [(ngModel)]="model.addressTitle" name="title" id="title" required>
+            <div *ngIf="title.invalid && title.dirty" class="alert alert-danger" role="alert">
+              Required the title!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <div class="form-group bmd-form-group">
+              <label class="bmd-label-floating"> </label>
+              <textarea class="form-control" placeholder="Details" #detail="ngModel" [(ngModel)]="model.addressDetails"
+                name="detail" id="detail" required></textarea>
+              <div *ngIf="detail.invalid && detail.dirty" class="alert alert-danger" role="alert">
+                Required the detail!
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="City" class="form-control" #city="ngModel" [(ngModel)]="model.addressCity"
+              name="city" id="city" required>
+            <div *ngIf="city.invalid && city.dirty" class="alert alert-danger" role="alert">
+              Required the city!
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <label class="bmd-label-floating"></label>
+            <input type="text" placeholder="Province" class="form-control" #province="ngModel"
+              [(ngModel)]="model.addressProvince" name="province" id="province" required>
+            <div *ngIf="province.invalid && province.dirty" class="alert alert-danger" role="alert">
+              Required the province!
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary pull-right">Create Customer</button>
+      <div class="clearfix"></div>
+    </form>
+  </div>

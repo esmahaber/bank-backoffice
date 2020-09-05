@@ -1,0 +1,17 @@
+.customer{
+padding: 0;
+border: none;
+background: none;
+}
+
+.btn-circle {
+    height: 2.2rem !important;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: none;
+    box-sizing: border-box;
+    text-align: center !important;
+    padding: 10px;
+}

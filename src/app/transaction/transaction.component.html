@@ -1,0 +1,58 @@
+<div class="card">
+  <div class="card-header card-header-primary">
+    <h4 class="card-title">{{head}}</h4>
+    <p class="card-category">Created using Roboto Font Family</p>
+  </div>
+  <div class="card-body">
+
+    <form id="form-margin" #transactionForm="ngForm" (ngSubmit)="addTransaction(transactionForm)">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <input type="text" placeholder="Gönderen Hesap" class="form-control" #sender="ngModel"
+              [(ngModel)]="model.senderAccountId" name="senderAccountId" id="senderAccountId" required>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group bmd-form-group">
+            <input type="text" placeholder="Alıcı Hesap" class="form-control" #sender="ngModel"
+              [(ngModel)]="model.receiverAccountId" name="receiverAccountId" id="receiverAccountId" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group bmd-form-group">
+            <input type="text" placeholder="Açıklama" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group bmd-form-group">
+            <input type="text" placeholder="Miktar" class="form-control" #sender="ngModel" [(ngModel)]="model.amount"
+              name="amount" id="amount" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group bmd-form-group">
+            <select class="form-control custom-select mr-sm-2" id="inlineFormCustomSelect" #sender="ngModel"
+              [(ngModel)]="model.transactionType" name="transactionType" required>
+              <option selected>İşlem Türü</option>
+              <option value="Debt">Debt</option>
+              <option value="Credit">Credit</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary pull-right" [disabled]="transactionForm.invalid">İşlemi
+        Onayla</button>
+      <div class="clearfix"></div>
+    </form>
+
+    <router-outlet></router-outlet>
+  </div>

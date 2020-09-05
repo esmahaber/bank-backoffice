@@ -1,0 +1,48 @@
+<div class="card">
+    <div class="card-header card-header-primary">
+        <h4 class="card-title ">Simple Table</h4>
+        <p class="card-category"> Here is a subtitle for this table</p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class=" text-primary">
+                    <tr>
+                        <th *ngFor="let header of tableHeaders">
+                            {{header}}
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let transaction of transactions">
+                        <td>
+                            {{transaction.id}}
+                        </td>
+                        <td class="text-primary">
+                            {{transaction.transactionDate}}
+                        </td>
+                        <td>
+                            {{transaction.Sender}}
+                        </td>
+                        <td>
+                            {{transaction.Receiver}}
+                        </td>
+                        <td>
+                            {{transaction.amount}}
+                        </td>
+                        <td class="text-primary">
+                            {{transaction.transactionType}}
+                        </td>
+                        <td>
+                            {{transaction.explanation}}
+                        </td>
+
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

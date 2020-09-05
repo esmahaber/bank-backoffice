@@ -1,0 +1,131 @@
+<button title="Update account" class="btn btn-warning btn-circle justify-content-end" (click)="openModal(template)">
+    <i class="fa fa-pencil-square-o"></i>
+</button>
+<ng-template #template>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body" *ngFor="let customer of customer">
+        <form id="form-margin" #customerUpdateForm="ngForm" (ngSubmit)="updateCustomerFonk(customerUpdateForm)">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.name}} class="form-control" #name="ngModel"
+                            [(ngModel)]="updateCustomer.name" name="name" id="name" required>
+                        <div *ngIf="name.invalid && name.dirty" class="alert alert-danger" role="alert">
+                            Required the name!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.lastname}} class="form-control" #lastname="ngModel"
+                            [(ngModel)]="updateCustomer.lastname" value={{customer.lastname}} name="lastname"
+                            id="lastname" required>
+                        <div *ngIf="lastname.invalid && lastname.dirty" class="alert alert-danger" role="alert">
+                            Required the lastname!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group bmd-form-group">
+                        <input type="date" class="form-control" #birthDate="ngModel"
+                            [(ngModel)]="updateCustomer.birthDate" name="birthDate" id="birthDate" required>
+                        <div *ngIf="birthDate.invalid && birthDate.dirty" class="alert alert-danger" role="alert">
+                            Required the birth date!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.accountNumber}} class="form-control"
+                            #cardNumber="ngModel" [(ngModel)]="updateCustomer.accountNumber" name="cardNumber"
+                            id="cardNumber" required>
+                        <div *ngIf="cardNumber.invalid && cardNumber.dirty" class="alert alert-danger" role="alert">
+                            Required the card number!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="tim-note">Contact</span>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <input type="phone" placeholder={{customer.phone}} class="form-control" #phone="ngModel"
+                            [(ngModel)]="updateCustomer.phone" value={{customer.phoneNumber}} name="phoneNumber"
+                            id="phoneNumber" required>
+                        <div *ngIf="phone.invalid && phone.dirty" class="alert alert-danger" role="alert">
+                            Required the phone!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <input type="email" placeholder={{customer.email}} class="form-control" #email="ngModel"
+                            [(ngModel)]="updateCustomer.email" name="email" id="email"
+                            required>
+                        <div *ngIf="email.invalid && email.dirty" class="alert alert-danger" role="alert">
+                            Required the e-mail!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.addressTitle}} class="form-control" #title="ngModel"
+                            [(ngModel)]="updateCustomer.addressTitle" name="title" id="title" required>
+                        <div *ngIf="title.invalid && title.dirty" class="alert alert-danger" role="alert">
+                            Required the title!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <div class="form-group bmd-form-group">
+                            <textarea class="form-control" placeholder={{customer.addressDetails}} #detail="ngModel"
+                                [(ngModel)]="updateCustomer.addressDetails" name="detail" id="detail"
+                                required></textarea>
+                            <div *ngIf="detail.invalid && detail.dirty" class="alert alert-danger" role="alert">
+                                Required the detail!
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.addressCity}} class="form-control" #city="ngModel"
+                            [(ngModel)]="updateCustomer.addressCity" name="city" id="city" required>
+                        <div *ngIf="city.invalid && city.dirty" class="alert alert-danger" role="alert">
+                            Required the city!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group bmd-form-group">
+                        <input type="text" placeholder={{customer.addressProvince}} class="form-control" #province="ngModel"
+                            [(ngModel)]="updateCustomer.addressProvince" name="province" id="province" required>
+                        <div *ngIf="province.invalid && province.dirty" class="alert alert-danger" role="alert">
+                            Required the province!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right">Update</button>
+            <div class="clearfix"></div>
+        </form>
+    </div>
+</ng-template>
